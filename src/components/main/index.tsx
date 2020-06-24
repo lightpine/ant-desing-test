@@ -9,15 +9,10 @@ import {
   FileOutlined,
 } from "@ant-design/icons"
 
-const { Header, Content, Sider } = Layout
+const { Header, Content } = Layout
 
 const Main: React.FC = () => {
-  const [collapsed, setCollapsed] = useState(false)
   const [check, setCheck] = useState(false)
-
-  const onCollapse = () => {
-    setCollapsed(collapsed)
-  }
 
   const onClickcheck = () => {
     setCheck(true)
@@ -41,15 +36,9 @@ const Main: React.FC = () => {
             회원
           </Menu.Item>
           <Menu.Item key="2" icon={<DesktopOutlined />}>
-            회원가입
-          </Menu.Item>
-          <Menu.Item key="3" icon={<DesktopOutlined />}>
             지점
           </Menu.Item>
-          <Menu.Item key="4" icon={<DesktopOutlined />}>
-            지점가입
-          </Menu.Item>
-          <Menu.Item key="9" icon={<FileOutlined />}>
+          <Menu.Item key="3" icon={<FileOutlined />}>
             파일다운로드
           </Menu.Item>
         </Menu>

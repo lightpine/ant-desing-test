@@ -1,5 +1,5 @@
 import React from "react"
-import { Table } from "antd"
+import { Table, Space } from "antd"
 import { ColumnType } from "antd/es/table"
 import { data } from "../../data"
 
@@ -35,6 +35,16 @@ const columns: ColumnType<User>[] = [
     onFilter: (value: any, record) => record.address.indexOf(value) === 0,
     sorter: (a, b) => a.address.length - b.address.length,
     sortDirections: ["descend", "ascend"],
+  },
+  {
+    title: "속성",
+    key: "action",
+    render: () => (
+      <Space size="middle">
+        <button>수정</button>
+        <button>삭제</button>
+      </Space>
+    ),
   },
 ]
 
