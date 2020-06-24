@@ -33,9 +33,10 @@ const Main: React.FC = () => {
 
   return (
     <Layout style={{ minHeight: "100vh" }}>
-      <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
+      <Layout className="site-layout">
+        <Header className="site-layout-background" style={{ padding: 0 }} />
         <div className="logo" />
-        <Menu theme="dark" defaultSelectedKeys={["1"]} mode="inline">
+        <Menu theme="dark" defaultSelectedKeys={["1"]} mode="horizontal">
           <Menu.Item key="1" icon={<PieChartOutlined />}>
             회원
           </Menu.Item>
@@ -52,13 +53,9 @@ const Main: React.FC = () => {
             파일다운로드
           </Menu.Item>
         </Menu>
-      </Sider>
-      <Layout className="site-layout">
-        <Header className="site-layout-background" style={{ padding: 0 }} />
         <Content style={{ margin: "0 16px" }}>
           <Breadcrumb style={{ margin: "16px 0" }}>
             <Breadcrumb.Item>회원</Breadcrumb.Item>
-            <Breadcrumb.Item>회원리스트</Breadcrumb.Item>
           </Breadcrumb>
           <Button type="primary" size={"large"} onClick={onClickcheck}>
             추가

@@ -1,48 +1,43 @@
 import React from "react"
 import { Table } from "antd"
+import { ColumnType } from "antd/es/table"
+import { data } from "../../data"
 
-const columns = [
+export interface User {
+  key: number
+  name: string
+  tel: string
+  address: string
+}
+
+const columns: ColumnType<User>[] = [
   {
-    title: "Name",
+    title: "이름",
     dataIndex: "name",
-    key: "name",
+    // specify the condition of filtering result
+    // here is that finding the name started with `value`
+    onFilter: (value: any, record) => record.name.indexOf(value) === 0,
+    sorter: (a, b) => a.name.length - b.name.length,
+    sortDirections: ["descend", "ascend"],
   },
   {
-    title: "Tel",
+    title: "전화번호",
     dataIndex: "tel",
-    key: "tel",
+    filterMultiple: false,
+    onFilter: (value: any, record) => record.address.indexOf(value) === 0,
+    // sorter: (a, b) => a.tel - b.tel,
+    sortDirections: ["descend", "ascend"],
   },
   {
-    title: "Address",
+    title: "등록지점",
     dataIndex: "address",
-    key: "address",
-  },
-  {
-    title: "Action",
-    key: "action",
+    filterMultiple: false,
+    onFilter: (value: any, record) => record.address.indexOf(value) === 0,
+    sorter: (a, b) => a.address.length - b.address.length,
+    sortDirections: ["descend", "ascend"],
   },
 ]
 
-const data = [
-  {
-    key: "1",
-    name: "John Brown",
-    tel: "010-0000-1111",
-    address: "New York No. 1 Lake Park",
-  },
-  {
-    key: "2",
-    name: "Jim Green",
-    tel: "010-0000-2222",
-    address: "London No. 1 Lake Park",
-  },
-  {
-    key: "3",
-    name: "Joe Black",
-    tel: "010-0000-3333",
-    address: "Sidney No. 1 Lake Park",
-  },
-]
 export const TableData = () => {
   return <Table columns={columns} dataSource={data} />
 }
